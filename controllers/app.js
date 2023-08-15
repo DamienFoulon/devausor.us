@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 
 // Config
 const app = express();
-const db = new JsonDB(new Config("db", true, false, '/'));
+const db = new JsonDB(new Config("db", true, true, '/'));
 dotenv.config();
 
 // Middleware
@@ -28,26 +28,29 @@ export async function getHome(req, res) {
 export async function createUrl(req, res) {
     const defaultUrl = req.body.url;
     const url = await createShortUrl(defaultUrl);
-    console.log('Created url : ', url)
+
     pug.renderFile('views/url.pug', {
-        title: 'URL',
-        url: url,
-    },
-    function(err, html) {
-        if (err) throw err;
-        res.send(html);
-    });
+            title: 'URL',
+            url: url,
+        },
+        function(err, html) {
+            if (err) throw err;
+            res.send(html);
+        });
 }
 export async function getUrl(req, res) {
     const code = req.params.url;
+    await db.reload();
     const data = await db.getData('/urls');
-    console.log('data : ', data);
-    console.log('env url : ', process.env.APP_URL)
-    console.log('expected url : ', `${process.env.APP_URL}/url/${code}`);
-    const urlData = await data.find((url) => url.shortUrl == `${process.env.APP_URL}/url/${code}`);
-    console.log('urlData : ', urlData);
-    if (!urlData) {
+    const urlDataIndex = data.findIndex((url) => url.shortUrl === `${process.env.APP_URL}/url/${code}`);
+
+    if (urlDataIndex === -1) {
         return res.status(404).send('URL not found');
     }
-    res.redirect(urlData.defaultUrl);
+
+    // Increment the clicks value
+    data[urlDataIndex].clicks = data[urlDataIndex].clicks ? data[urlDataIndex].clicks + 1 : 1;
+    await db.push(`/urls`, data); // Update the entire '/urls' array
+
+    res.redirect(data[urlDataIndex].defaultUrl);
 }

@@ -1,6 +1,19 @@
-div.main-container
-    h1.title
-        | Devausor.us
-    form(action='/url' method='post')
-        input(type='url' name='url' placeholder='https://www.example.com')
-        input(type='submit' value='Submit')
+html
+    head
+        title Devausor.us
+        link(rel='stylesheet' href='/styles.scss')
+        link(rel="icon", type="image/svg+xml", href="logo.svg")
+    body
+        div.main-container
+            div.top-part
+                h1.title
+                    | Devausor.us
+                div.guidelines
+                    p
+                        | Devausor.us is a place where you can create your own short URL.
+                    p
+                        | You only need to enter your URL and click the scissors.
+            div.bot-part
+                form.link-generator-form( action='/url' method='post')
+                    input.link-field(type='url' name='url' placeholder='https://www.example.com' required='required')
+                    input.submit-btn(type='submit' value='✂️')

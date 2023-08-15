@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+:root {
+  --primary-color: #e0e0e0;
+  --secondary-color: #7eb681;
+  --tertiary-color: #5b865f;
+  --quaternary-color: #272727;
+  --quinary-color: #3498db;
+  --background-color: #121212;
+}
+
+body {
+  font-family: Hind, sans-serif;
+  color: var(--primary-color);
+  background: var(--background-color);
+}
+
+h1 {
+  font-family: 'Kanit', sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--secondary-color);
+  margin: 0;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4em;
+}
+
+.top-part {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+.top-part .guidelines {
+  text-align: center;
+  line-height: .5em;
+  letter-spacing: 3px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.bot-part {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+.bot-part .link-generator-form {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  gap: 1em;
+}
+
+.bot-part .link-generator-form .link-field {
+  color: var(--primary-color);
+  background: transparent;
+  width: 25em;
+  height: 4em;
+  padding: 1em 2em;
+  border: 2px solid var(--secondary-color);
+  border-radius: 15px;
+}
+
+.bot-part .link-generator-form .submit-btn {
+  background: transparent;
+  border: none;
+  font-size: 2em;
+  width: 2em;
+  transform: translate(-125%, 0);
+}

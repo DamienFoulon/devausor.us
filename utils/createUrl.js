@@ -3,7 +3,7 @@ import { JsonDB, Config } from 'node-json-db';
 import dotenv from 'dotenv';
 
 // Config
-const db = new JsonDB(new Config("db", true, false, '/'));
+const db = new JsonDB(new Config("db", true, true, '/'));
 dotenv.config();
 
 export async function createShortUrl(defaultUrl) {
@@ -14,9 +14,11 @@ export async function createShortUrl(defaultUrl) {
         shortUrl: `${process.env.APP_URL}/url/${await randomCode()}`,
         clicks: 0,
     };
+    await db.reload();
     await db.push('/urls[]', url, true).catch((err) => {
         console.log(err);
     });
+    await db.reload();
     return url.shortUrl;
 }
 
@@ -29,7 +31,7 @@ export async function randomCode() {
     const data = await db.getData('/urls');
     const urlData = data.find((url) => url.shortUrl == `${process.env.APP_URL}/url/${result}`);
     if (urlData) {
-        randomCode();
+        await randomCode();
     } else {
         return result;
     }
