@@ -14,6 +14,8 @@ body {
   font-family: Hind, sans-serif;
   color: var(--primary-color);
   background: var(--background-color);
+  padding: 0;
+  margin: 0;
 }
 
 h1 {
@@ -32,6 +34,12 @@ h1 {
   gap: 4em;
 }
 
+@media screen and (max-width: 768px) {
+  .main-container {
+    height: 100vh;
+  }
+}
+
 .top-part {
   display: flex;
   flex-direction: column;
@@ -47,6 +55,13 @@ h1 {
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--primary-color);
+}
+
+@media screen {
+  .top-part .guidelines {
+    font-size: 1rem;
+    line-height: 1.5em;
+  }
 }
 
 .bot-part {
@@ -80,5 +95,6 @@ h1 {
   border: none;
   font-size: 2em;
   width: 2em;
-  transform: translate(-125%, 0);
+  transform: translate(200%, 0);
+  position: absolute;
 }
