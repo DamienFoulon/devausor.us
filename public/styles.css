@@ -26,12 +26,21 @@ h1 {
   margin: 0;
 }
 
-.main-container {
+.flex-row {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-container {
   align-items: center;
   justify-content: center;
   gap: 4em;
+  height: 100vh;
 }
 
 @media screen and (max-width: 768px) {
@@ -97,4 +106,26 @@ h1 {
   width: 2em;
   transform: translate(200%, 0);
   position: absolute;
+}
+
+
+/* Link Page */
+.link-container {
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  padding: 2em 4em;
+  background: var(--primary-color);
+  color: var(--quaternary-color);
+  border-radius: 15px;
+}
+
+.shortened-link {
+  color: var(--quinary-color);
+}
+
+.copy-link-btn {
+  background: transparent;
+  border: none;
+  color: var(--quaternary-color);
 }
