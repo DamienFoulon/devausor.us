@@ -1,6 +1,7 @@
 // Libs
 import { JsonDB, Config } from 'node-json-db';
 import dotenv from 'dotenv';
+import qrcode from 'qrcode';
 
 // Config
 const db = new JsonDB(new Config("db", true, true, '/'));
@@ -34,5 +35,14 @@ export async function randomCode() {
         await randomCode();
     } else {
         return result;
+    }
+}
+
+export async function createQRCode(url) {
+    try {
+        const qr = await qrcode.toDataURL( url, { errorCorrectionLevel: 'H', type: '' });
+        return qr;
+    } catch(e) {
+        console.log(e)
     }
 }

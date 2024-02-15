@@ -14,4 +14,9 @@ html
                         | #{url}
                 button.copy-link-btn(data-link=`${url}` title='Copy to clipboard')
                     i.fa-solid.fa-copy.fa-2x
-        script(src='/script.js')
+            div.qr-container.flex-col
+                p.qr-desc
+                    | Scan the QR code to visit the shortened URL
+                img#qr-code(src=`${qr}`)
+
+        script(src='/script.js' type='module')

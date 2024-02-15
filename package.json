@@ -8,7 +8,8 @@
     "node-json-db": "^2.2.0",
     "node-sass": "^9.0.0",
     "nodemon": "^2.0.22",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "qrcode": "^1.5.3"
   },
   "name": "devausor.us",
   "version": "1.0.0",

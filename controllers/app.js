@@ -14,7 +14,7 @@ dotenv.config();
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Utils
-import { createShortUrl } from '../utils/createUrl.js';
+import { createShortUrl, createQRCode } from '../utils/createUrl.js';
 export async function getHome(req, res) {
     pug.renderFile('views/home.pug', {
         title: 'Home',
@@ -28,10 +28,11 @@ export async function getHome(req, res) {
 export async function createUrl(req, res) {
     const defaultUrl = req.body.url;
     const url = await createShortUrl(defaultUrl);
-
+    const qr = await createQRCode(url);
     pug.renderFile('views/url.pug', {
             title: 'URL',
             url: url,
+            qr: qr,
         },
         function(err, html) {
             if (err) throw err;
