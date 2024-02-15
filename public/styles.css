@@ -87,6 +87,7 @@ h1 {
   align-items: stretch;
   justify-content: center;
   gap: 1em;
+  position: relative;
 }
 
 .bot-part .link-generator-form .link-field {
@@ -97,6 +98,7 @@ h1 {
   padding: 1em 2em;
   border: 2px solid var(--secondary-color);
   border-radius: 15px;
+  /*! position: relative; */
 }
 
 .bot-part .link-generator-form .submit-btn {
@@ -104,8 +106,10 @@ h1 {
   border: none;
   font-size: 2em;
   width: 2em;
-  transform: translate(200%, 0);
+  /*! transform: translate(200%, 0); */
   position: absolute;
+  top: 20%;
+  right: 5%;
 }
 
 
