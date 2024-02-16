@@ -39,8 +39,9 @@ export async function randomCode() {
 }
 
 export async function createQRCode(url) {
+    let link = url ? url+"?qr" : null
     try {
-        const qr = await qrcode.toDataURL( url, { errorCorrectionLevel: 'H', type: '' });
+        const qr = await qrcode.toDataURL( link, { errorCorrectionLevel: 'H', type: '' });
         return qr;
     } catch(e) {
         console.log(e)
