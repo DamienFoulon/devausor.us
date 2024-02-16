@@ -6,9 +6,9 @@ html
             div.link-container.flex-row
                 p.url
                     | Your shortened URL is :
-                    a.shortened-link(href=`${url}`)
+                    a.shortened-link.cta-click-link(href=`${url}`)
                         | #{url}
-                button.copy-link-btn(data-link=`${url}` title='Copy to clipboard')
+                button.copy-link-btn.cta-copy-link(data-link=`${url}` title='Copy to clipboard')
                     i.fa-solid.fa-copy.fa-2x
             div.qr-container.flex-col
                 p.qr-desc
